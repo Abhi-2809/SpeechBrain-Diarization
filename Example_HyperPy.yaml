@@ -1,0 +1,27 @@
+# Seed needs to be set at top of yaml, before objects with parameters are made
+seed: 1234
+__set_seed: !apply:torch.manual_seed [!ref <seed>]
+
+# Training params
+N_epochs: 15
+lr: 0.001
+dataloader_options:
+    batch_size: 1
+
+# Model parameters
+#dropout: 0.15
+
+
+inp_neurons: 12025
+num_labels: 11952
+
+model: !new:torch.nn.Linear
+    in_features: !ref <inp_neurons>
+    out_features: !ref <num_labels>
+    bias: True
+
+modules:
+    model: !ref <model>
+
+opt_class: !name:torch.optim.Adam
+    lr: !ref <lr>
