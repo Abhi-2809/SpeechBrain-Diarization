@@ -1,4 +1,1 @@
 # SpeechBrain-Diarization
-
-
-COMING SOON
